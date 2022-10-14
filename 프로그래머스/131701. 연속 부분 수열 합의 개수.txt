@@ -1,0 +1,25 @@
+from collections import deque
+
+def solution(elements):
+    answer = dict()
+    queue = deque()
+    for i in range(len(elements)):
+        queue.append(elements[i])
+    queue.rotate(1)
+    
+    for i in range(len(queue)):
+        qu_li = list(queue)
+        if(qu_li[i] not in answer):
+            answer[qu_li[i]] = 1
+    if(sum(qu_li) not in answer):
+        answer[sum(qu_li)] = 1
+    
+    for i in range(len(elements)):
+        queue.rotate(-1)
+        qu_li = list(queue)
+        for j in range(2, len(elements)):
+            cnt = sum(qu_li[0:j])
+            if(cnt not in answer):
+                answer[cnt] = 1
+                
+    return len(answer)

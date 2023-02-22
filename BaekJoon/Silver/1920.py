@@ -5,7 +5,6 @@ arr.sort()
 m = int(input())
 target = list(map(int, input().split()))
 
-answer = []
 for num in target:
     start = 0
     end = n-1
@@ -13,12 +12,12 @@ for num in target:
     while start <= end:
         mid = (start+end)//2
         if num == arr[mid]:
-            flag = True
             print(1)
+            flag = True
             break
-        elif num > arr[mid]:
-            start = mid+1
+        elif num < arr[mid]:
+            end = mid - 1
         else:
-            end = mid-1
+            start = mid + 1
     if not flag:
         print(0)
